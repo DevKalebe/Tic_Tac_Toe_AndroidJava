@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Jogo da Velha</string>
+    <string name="action_settings">Configurações</string>
+    <string name="hello_blank_fragment">Olá fragmento em branco</string>
+    <string name="Player_1_Header">Jogador 1 \"X\"</string>
+    <string name="Player_2_Header">Jogador 2 \"O\"</string>
+</resources>

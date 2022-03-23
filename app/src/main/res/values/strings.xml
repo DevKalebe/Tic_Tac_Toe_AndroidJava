@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Hash</string>
+    <string name="action_settings">Settings</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Player_1_Header">Player 1 "X"</string>
+    <string name="Player_2_Header">Player 2 "O"</string>
+    <string name="Scoreboard_Player_1" translatable="false">0</string>
+    <string name="Scoreboard_Player_2" translatable="false">0</string>
+</resources>
