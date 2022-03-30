@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroud_game"
+    android:background="@color/black"
     tools:context=".fragment.JogoFragment">
 
 
@@ -12,38 +12,43 @@
         android:id="@+id/constraintLayout"
         android:layout_width="411dp"
 
-        android:layout_height="67dp"
+        android:layout_height="96dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="136dp"
-            android:layout_height="28dp"
-            android:text="@string/Player_1_Header"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.051" />
 
-        <TextView
-            android:layout_width="55dp"
-            android:layout_height="28dp"
-            android:text="@string/Scoreboard_Player_1"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.955"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="2dp" />
+
+            <TextView
+                android:id="@+id/textJogador1"
+                android:layout_width="177dp"
+                android:layout_height="38dp"
+                android:text="@string/Player_1_Header"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="25dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.021"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.137" />
+
+            <TextView
+                android:id="@+id/textPontJogador1"
+                android:layout_width="58dp"
+                android:layout_height="44dp"
+                android:text="@string/Scoreboard_Player_1"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.954"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="8dp" />
+
+
 
         <View
             android:layout_width="400dp"
@@ -52,37 +57,43 @@
             android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.454"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.56" />
 
         <TextView
-            android:layout_width="136dp"
-            android:layout_height="28dp"
+            android:id="@+id/textJogador2"
+            android:layout_width="183dp"
+            android:layout_height="33dp"
             android:text="@string/Player_2_Header"
             android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:textSize="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.948" />
+            app:layout_constraintVertical_bias="0.968" />
 
         <TextView
-            android:layout_width="55dp"
-            android:layout_height="28dp"
+            android:layout_width="59dp"
+            android:layout_height="39dp"
+            android:layout_marginTop="60dp"
+            android:id="@+id/textPontJogador2"
             android:text="@string/Scoreboard_Player_2"
             android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:textSize="30dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.955"
+            app:layout_constraintHorizontal_bias="0.954"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="37dp" />
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TableLayout
+        android:id="@+id/tableLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -96,24 +107,15 @@
 
             <Button
                 android:id="@+id/bt00"
-                android:layout_width="0dp"
-                android:layout_height="150dp"
-                android:layout_margin="3dp"
-                android:layout_weight="1" />
+                style="@style/botaou" />
 
             <Button
                 android:id="@+id/bt01"
-                android:layout_width="0dp"
-                android:layout_height="150dp"
-                android:layout_margin="3dp"
-                android:layout_weight="1" />
+                style="@style/botaou" />
 
             <Button
                 android:id="@+id/bt02"
-                android:layout_width="0dp"
-                android:layout_height="150dp"
-                android:layout_margin="3dp"
-                android:layout_weight="1" />
+                style="@style/botaou" />
         </TableRow>
 
         <TableRow
@@ -122,24 +124,15 @@
 
             <Button
                 android:id="@+id/bt10"
-                android:layout_width="0dp"
-                android:layout_height="150dp"
-                android:layout_margin="3dp"
-                android:layout_weight="1" />
+                style="@style/botaou" />
 
             <Button
                 android:id="@+id/bt11"
-                android:layout_width="0dp"
-                android:layout_height="150dp"
-                android:layout_margin="3dp"
-                android:layout_weight="1" />
+                style="@style/botaou" />
 
             <Button
                 android:id="@+id/bt12"
-                android:layout_width="0dp"
-                android:layout_height="150dp"
-                android:layout_margin="3dp"
-                android:layout_weight="1" />
+                style="@style/botaou" />
         </TableRow>
 
         <TableRow
@@ -148,25 +141,25 @@
 
             <Button
                 android:id="@+id/bt20"
-                android:layout_width="0dp"
-                android:layout_height="150dp"
-                android:layout_margin="3dp"
-                android:layout_weight="1" />
+                style="@style/botaou" />
 
             <Button
                 android:id="@+id/bt21"
-                android:layout_width="0dp"
-                android:layout_height="150dp"
-                android:layout_margin="3dp"
-                android:layout_weight="1" />
+                style="@style/botaou" />
 
             <Button
                 android:id="@+id/bt22"
-                android:layout_width="0dp"
-                android:layout_height="150dp"
-                android:layout_margin="3dp"
-                android:layout_weight="1" />
+                style="@style/botaou" />
         </TableRow>
     </TableLayout>
 
+    <Button
+        android:id="@+id/btRenewBoard"
+        android:layout_width="234dp"
+        android:layout_height="58dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

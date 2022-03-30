@@ -7,4 +7,6 @@
     <string name="Player_2_Header">Player 2 "O"</string>
     <string name="Scoreboard_Player_1" translatable="false">0</string>
     <string name="Scoreboard_Player_2" translatable="false">0</string>
+    <string name="winner">congratulations you won</string>
+    <string name="old">See, it\'s old!</string>
 </resources>
