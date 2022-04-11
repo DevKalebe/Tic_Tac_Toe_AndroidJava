@@ -3,10 +3,18 @@
     <string name="action_settings">Settings</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="Player_1_Header">Player 1 "X"</string>
-    <string name="Player_2_Header">Player 2 "O"</string>
-    <string name="Scoreboard_Player_1" translatable="false">0</string>
+    <string name="Player_1_Header">Player 1 "%1$s"</string>
+    <string name="Player_2_Header">Player 2 "%1$s"</string>
+    <string name="Scoreboard_Player_1" translatable="false">X</string>
     <string name="Scoreboard_Player_2" translatable="false">0</string>
     <string name="winner">congratulations you won</string>
     <string name="old">See, it\'s old!</string>
+    <string name="reset">Reset the score</string>
+    <string name="home">Back to home screen</string>
+    <string name="preferences">Preferences</string>
+    <string name="simbolPlayer1"> symbol player 1</string>
+    <string name="simbolPlayer2"> symbol player 2</string>
+    <string name="summaryPlayer1">Choose player 1 symbol</string>
+    <string name="summaryPlayer2">Choose player 2 symbol</string>
+    <string name="titleHomeGame">Welcome to the tic-tac-toe game</string>
 </resources>

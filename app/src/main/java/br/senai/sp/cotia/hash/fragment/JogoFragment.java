@@ -3,10 +3,15 @@ package br.senai.sp.cotia.hash.fragment;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -17,6 +22,7 @@ import java.util.Random;
 
 import br.senai.sp.cotia.hash.R;
 import br.senai.sp.cotia.hash.databinding.FragmentJogoBinding;
+import br.senai.sp.cotia.hash.util.PrefsUtil;
 
 public class JogoFragment extends Fragment {
 
@@ -30,12 +36,17 @@ public class JogoFragment extends Fragment {
     private String simbJog1, simbJog2, simbolo;
     // variavel Randow para sortear quem inicia
     private Random random;
-
     private int numJogada = 0;
+
+    // variaveis para o placar
+    private int placarJog1 = 0, placarJog2 = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // habilitar o menu
+        setHasOptionsMenu(true);
+
         // instaciar o biding
         binding = FragmentJogoBinding.inflate(inflater, container, false);
 
@@ -68,8 +79,12 @@ public class JogoFragment extends Fragment {
         }
 
         // define os simbolos do jogador 1 e do jogador 2
-        simbJog1 = "X";
-        simbJog2 = "O";
+        simbJog1 = PrefsUtil.getSimboloJog1(getContext());
+        simbJog2 = PrefsUtil.getSimboloJog2(getContext());
+
+        // atualizar o placar com os simbolos
+        binding.textJogador1.setText(getResources().getString(R.string.Player_1_Header,simbJog1));
+        binding.textJogador2.setText(getResources().getString(R.string.Player_2_Header,simbJog2));
 
         // instacia o Random
         random = new Random();
@@ -91,17 +106,24 @@ public class JogoFragment extends Fragment {
         }
     }
 
+    private void atualizaPlacar(){
+        binding.textPontJogador1.setText(placarJog1+"");
+        binding.textPontJogador2.setText(placarJog2+"");
+
+
+    }
+
     private void atualizaVez(){
         if (simbolo.equals(simbJog1)){
-            binding.textJogador1.setBackgroundResource(R.color.white);
-            binding.textPontJogador1.setBackgroundResource(R.color.white);
-            binding.textJogador1.setTextColor(Color.BLACK);
+            binding.textJogador1.setTextColor(Color.GREEN);
             binding.textPontJogador1.setTextColor(Color.BLACK);
-        }else{
-            binding.textJogador2.setBackgroundResource(R.color.white);
-            binding.textPontJogador2.setBackgroundResource(R.color.white);
             binding.textJogador2.setTextColor(Color.BLACK);
             binding.textPontJogador2.setTextColor(Color.BLACK);
+        }else{
+            binding.textJogador2.setTextColor(Color.BLACK);
+            binding.textPontJogador2.setTextColor(Color.BLACK);
+            binding.textJogador1.setTextColor(Color.BLACK);
+            binding.textPontJogador1.setTextColor(Color.BLACK);
         }
     }
 
@@ -149,6 +171,35 @@ public class JogoFragment extends Fragment {
         }
         // zerar o número de jogadas
         numJogada = 0;
+
+        // sorteia o próximo
+        sorteia();
+        // atualiza o jogador
+        atualizaVez();
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_main, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        // verificar qual item do menu foi selecionado
+        switch (item.getItemId()){
+            // caso seja a opção de resetar
+            case R.id.menu_resetar:
+                placarJog1 = 0;
+                placarJog2 = 0;
+                atualizaPlacar();
+                renewBoard();
+                break;
+                // caso seja a opção de preferências
+            case R.id.menu_prefs:
+                NavHostFragment.findNavController(JogoFragment.this).navigate(R.id.action_jogoFragment_to_prefFragment);
+        }
+
+        return true;
     }
 
     private View.OnClickListener listenerBotoes = btPress -> {
@@ -175,9 +226,18 @@ public class JogoFragment extends Fragment {
         if (numJogada >= 5 && venceu()){
             botao.setClickable(false);
             Toast.makeText(getContext(), R.string.winner, Toast.LENGTH_LONG).show();
+
+            if (simbolo.equals(simbJog1)){
+                placarJog1++;
+            }else{
+                placarJog2++;
+            }
+            // atualizar o placar
+            atualizaPlacar();
+            // reseta
             renewBoard();
         }else if (numJogada == 9){
-            //informa que deu velha
+            // informa que deu velha
             Toast.makeText(getContext(), R.string.old, Toast.LENGTH_LONG).show();
             // reseta
             renewBoard();

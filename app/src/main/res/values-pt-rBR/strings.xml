@@ -3,8 +3,16 @@
     <string name="app_name">Jogo da Velha</string>
     <string name="action_settings">Configurações</string>
     <string name="hello_blank_fragment">Olá fragmento em branco</string>
-    <string name="Player_1_Header">Jogador 1 \"X\"</string>
-    <string name="Player_2_Header">Jogador 2 \"O\"</string>
+    <string name="Player_1_Header">Jogador 1 \"%1$s\"</string>
+    <string name="Player_2_Header">Jogador 2 \"%1$s\"</string>
     <string name="winner">"Parabéns você ganhou "</string>
     <string name="old">Vixi, deu velha!</string>
+    <string name="reset">Resetar placar</string>
+    <string name="home">Voltar a tela inicial</string>
+    <string name="preferences">Preferências</string>
+    <string name="summaryPlayer1">Escolha o simbolo do Jogador 1</string>
+    <string name="summaryPlayer2">Escolha o simbolo do Jogador 2</string>
+    <string name="simbolPlayer1">Simbolo Jogador 1</string>
+    <string name="simbolPlayer2">Simbolo Jogador 2</string>
+    <string name="titleHomeGame">Bem-vindo ao Jogo da velha !</string>
 </resources>
