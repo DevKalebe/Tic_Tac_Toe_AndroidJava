@@ -17,4 +17,5 @@
     <string name="summaryPlayer1">Choose player 1 symbol</string>
     <string name="summaryPlayer2">Choose player 2 symbol</string>
     <string name="titleHomeGame">Welcome to the tic-tac-toe game</string>
+    <string name="buttonStart">Start Game</string>
 </resources>

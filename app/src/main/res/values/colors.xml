@@ -5,7 +5,7 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#0D0D0D</color>
+    <color name="black">#000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="whitizinho">#818181</color>
     
@@ -17,4 +17,10 @@
 
     <color name="color012340">#012340</color>
     <color name="colorF2F0E4">#F2F0E4</color>
+
+<!--  Colors Yellow-->
+
+    <color name="color0D0D0D">#0D0D0D</color>
+    <color name="colorF2F2F2">#F2F2F2</color>
+    <color name="colorF2D230">#F2D230</color>
 </resources>
