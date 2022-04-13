@@ -15,6 +15,9 @@
     <string name="simbolPlayer1">Simbolo Jogador 1</string>
     <string name="simbolPlayer2">Simbolo Jogador 2</string>
     <string name="titleHomeGame">Bem-vindo ao Jogo da velha !</string>
-    <string name="gameWelcome">Bem-vindo ao jogo da velha!</string>
     <string name="buttonStart">Começar Jogo</string>
+    <string name="resetMenu">Resetar</string>
+    <string name="startMenu">Início</string>
+    <string name="winnerPlay1">jogador 1 ganhou</string>
+    <string name="winnerPlay2">jogador 2 ganhou</string>
 </resources>

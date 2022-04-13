@@ -5,16 +5,14 @@
     <item
         android:icon="@android:drawable/ic_menu_revert"
         android:id="@+id/menu_resetar"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
-    <item
-        android:icon="@android:drawable/ic_media_previous"
-        android:id="@+id/menu_inicio"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+        android:title="Resetar"
+        app:showAsAction="never"
+        />
+
     <item
         android:icon="@android:drawable/ic_menu_preferences"
         android:id="@+id/menu_prefs"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+        android:title="Preferencias"
+        app:showAsAction="never"
+        />
 </menu>

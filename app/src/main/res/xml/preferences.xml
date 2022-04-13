@@ -12,4 +12,11 @@
         android:title="@string/simbolPlayer2"
         android:summary="@string/summaryPlayer2"
         />
+    <androidx.preference.EditTextPreference
+
+        android:icon="@android:drawable/ic_menu_manage"
+        android:key="n_jogada"
+        android:title="Número Rodadas"
+        android:summary="Defina a quantidades de rodadas"
+        />
 </androidx.preference.PreferenceScreen>

@@ -9,6 +9,7 @@
     tools:context=".fragment.JogoFragment">
 
     <LinearLayout
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -16,12 +17,14 @@
         <TextView
             android:id="@+id/textJogador1"
             android:layout_width="0dp"
+
             android:layout_height="match_parent"
             android:layout_weight="4"
             android:text="@string/Player_1_Header"
             android:textAlignment="textStart"
             android:textColor="@color/white"
-            android:textSize="25dp">
+            android:textSize="25dp"
+            android:layout_marginStart="10dp">
 
         </TextView>
 
@@ -38,14 +41,6 @@
         </TextView>
     </LinearLayout>
 
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/white"
-        android:layout_margin="2dp"/>
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -59,7 +54,8 @@
             android:text="@string/Player_2_Header"
             android:textAlignment="textStart"
             android:textColor="@color/white"
-            android:textSize="25dp">
+            android:textSize="25dp"
+            android:layout_marginStart="10dp">
 
         </TextView>
 
@@ -137,4 +133,27 @@
                 style="@style/botaou" />
         </TableRow>
     </TableLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Placar Velha"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:layout_marginStart="10dp"/>
+
+        <TextView
+            android:id="@+id/tv_placarVelha"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text=""
+            android:textColor="@color/white" />
+    </LinearLayout>
 </LinearLayout>

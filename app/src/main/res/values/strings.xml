@@ -18,4 +18,8 @@
     <string name="summaryPlayer2">Choose player 2 symbol</string>
     <string name="titleHomeGame">Welcome to the tic-tac-toe game</string>
     <string name="buttonStart">Start Game</string>
+    <string name="resetMenu">Reset</string>
+    <string name="startMenu">Start</string>
+    <string name="winnerPlay1">congratulations to Player 1</string>
+    <string name="winnerPlay2">congratulations to Player 2</string>
 </resources>

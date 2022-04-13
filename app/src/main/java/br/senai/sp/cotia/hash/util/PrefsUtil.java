@@ -17,17 +17,9 @@ public class PrefsUtil {
 
     }
 
-    public static void setSimboloJog1(String simbolo, Context context){
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("simb_jog_1", simbolo);
-        editor.commit();
-    }
 
-    public static void setSimboloJog2(String simbolo, Context context){
+    public static String getRodada(Context context){
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("simb_jog_2", simbolo);
-        editor.commit();
+        return preferences.getString("n_jogada", "5");
     }
 }

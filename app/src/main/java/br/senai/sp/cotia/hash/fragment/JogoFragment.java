@@ -1,9 +1,12 @@
 package br.senai.sp.cotia.hash.fragment;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -37,9 +40,17 @@ public class JogoFragment extends Fragment {
     // variavel Randow para sortear quem inicia
     private Random random;
     private int numJogada = 0;
-
     // variaveis para o placar
     private int placarJog1 = 0, placarJog2 = 0;
+    // variaveis para contar a quantidade de velhas
+    private int placarQtdVelha = 0;
+    // variavel para definir a quantidade de rodadas
+    private String njogada;
+    private int qtdJogadas= 0;
+
+    // Alert Dialog
+    private AlertDialog alert;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -86,6 +97,10 @@ public class JogoFragment extends Fragment {
         binding.textJogador1.setText(getResources().getString(R.string.Player_1_Header,simbJog1));
         binding.textJogador2.setText(getResources().getString(R.string.Player_2_Header,simbJog2));
 
+        // atualiza o número de jogadas
+        njogada = PrefsUtil.getRodada(getContext());
+        qtdJogadas = Integer.parseInt(njogada);
+
         // instacia o Random
         random = new Random();
 
@@ -109,21 +124,20 @@ public class JogoFragment extends Fragment {
     private void atualizaPlacar(){
         binding.textPontJogador1.setText(placarJog1+"");
         binding.textPontJogador2.setText(placarJog2+"");
-
-
+        binding.tvPlacarVelha.setText(placarQtdVelha+"");
     }
 
     private void atualizaVez(){
         if (simbolo.equals(simbJog1)){
-            binding.textJogador1.setTextColor(Color.GREEN);
-            binding.textPontJogador1.setTextColor(Color.BLACK);
-            binding.textJogador2.setTextColor(Color.BLACK);
-            binding.textPontJogador2.setTextColor(Color.BLACK);
+            binding.textJogador1.setTextColor(Color.YELLOW);
+            binding.textPontJogador1.setTextColor(Color.YELLOW);
+            binding.textJogador2.setTextColor(Color.WHITE);
+            binding.textPontJogador2.setTextColor(Color.WHITE);
         }else{
-            binding.textJogador2.setTextColor(Color.BLACK);
-            binding.textPontJogador2.setTextColor(Color.BLACK);
-            binding.textJogador1.setTextColor(Color.BLACK);
-            binding.textPontJogador1.setTextColor(Color.BLACK);
+            binding.textJogador2.setTextColor(Color.YELLOW);
+            binding.textPontJogador2.setTextColor(Color.YELLOW);
+            binding.textJogador1.setTextColor(Color.WHITE);
+            binding.textPontJogador1.setTextColor(Color.WHITE);
         }
     }
 
@@ -178,6 +192,13 @@ public class JogoFragment extends Fragment {
         atualizaVez();
     }
 
+    // metodo que reseta game
+    private void resetaGame(){
+        placarJog1 = 0;
+        placarJog2 = 0;
+        placarQtdVelha = 0;
+    }
+
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.menu_main, menu);
@@ -185,17 +206,39 @@ public class JogoFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        // ALERTA
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Resetar");
+        builder.setMessage("Deseja mesmo resetar o jogo?");
+        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                placarJog1 = 0;
+                placarJog2 = 0;
+                placarQtdVelha=0;
+                atualizaPlacar();
+                renewBoard();
+                Toast.makeText(getContext(), "O jogo foi resetado", Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Toast.makeText(getContext(), "O jogo não foi resetado", Toast.LENGTH_SHORT).show();
+            }
+        });
         // verificar qual item do menu foi selecionado
         switch (item.getItemId()){
             // caso seja a opção de resetar
             case R.id.menu_resetar:
-                placarJog1 = 0;
-                placarJog2 = 0;
-                atualizaPlacar();
-                renewBoard();
+                alert = builder.create();
+                alert.show();
                 break;
                 // caso seja a opção de preferências
             case R.id.menu_prefs:
+
+
+
                 NavHostFragment.findNavController(JogoFragment.this).navigate(R.id.action_jogoFragment_to_prefFragment);
         }
 
@@ -223,6 +266,7 @@ public class JogoFragment extends Fragment {
         botao.setClickable(false);
 
 
+
         if (numJogada >= 5 && venceu()){
             botao.setClickable(false);
             Toast.makeText(getContext(), R.string.winner, Toast.LENGTH_LONG).show();
@@ -238,22 +282,50 @@ public class JogoFragment extends Fragment {
             renewBoard();
         }else if (numJogada == 9){
             // informa que deu velha
+            placarQtdVelha++;
+            // atualizar o placar
+            atualizaPlacar();
             Toast.makeText(getContext(), R.string.old, Toast.LENGTH_LONG).show();
             // reseta
             renewBoard();
         }else{
-            //  inverte o simbolo
+            // inverte o simbolo
             simbolo = simbolo.equals(simbJog1) ? simbJog2 : simbJog1;
-
             // atualiza a vez
             atualizaVez();
         }
 
-
+        // verifica se ganha por placar
+        int totalJogadas = (qtdJogadas / 2) + 1;
+        if (totalJogadas == placarJog1){
+            Toast.makeText(getContext(), R.string.winnerPlay1, Toast.LENGTH_LONG).show();
+            placarJog1 = 0;
+            placarJog2 = 0;
+            placarQtdVelha=0;
+            atualizaPlacar();
+            renewBoard();
+        }else if (totalJogadas == placarJog2){
+            Toast.makeText(getContext(), R.string.winnerPlay2, Toast.LENGTH_LONG).show();
+            placarJog1 = 0;
+            placarJog2 = 0;
+            placarQtdVelha=0;
+            atualizaPlacar();
+            renewBoard();
+        }
 
         Log.w("Button", line+"");
         Log.w("Button",column+"");
     };
 
-
+    @Override
+    public void onStart() {
+        super.onStart();
+        super.onStart();
+        // pega a referência para a activity
+        AppCompatActivity minhaActivity = (AppCompatActivity) getActivity();
+        // oculta a action bar
+        minhaActivity.getSupportActionBar().show();
+        // desabilita a seta de retornar
+        minhaActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+    }
 }
